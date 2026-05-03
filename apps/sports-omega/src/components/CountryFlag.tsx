@@ -1,3 +1,4 @@
+"use client";
 import { getCountryCode } from "../utils/countryFlags";
 
 interface CountryFlagProps {

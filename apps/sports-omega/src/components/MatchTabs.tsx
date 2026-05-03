@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+"use client";
+import { motion } from "framer-motion";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Activity, Users, History, Newspaper, BarChart3 } from "lucide-react";
 import { MatchDetails } from "../data/matches";

@@ -1,6 +1,7 @@
-import { motion } from "motion/react";
+"use client";
+import { motion } from "framer-motion";
 import { Clock, TrendingUp } from "lucide-react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { CountryFlag } from "./CountryFlag";
 
 interface Match {

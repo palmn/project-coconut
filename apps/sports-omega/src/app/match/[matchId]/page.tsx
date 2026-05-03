@@ -1,23 +1,28 @@
-import { useParams, Link } from "react-router";
-import { motion } from "motion/react";
+"use client";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock, MapPin, Tv, Radio as RadioIcon, TrendingUp } from "lucide-react";
-import { getMatchById } from "../data/matches";
-import { getHeadToHead } from "../data/headToHead";
-import { CountryFlag } from "../components/CountryFlag";
-import { Logo } from "../components/Logo";
-import { CountdownTimer } from "../components/CountdownTimer";
-import { MatchTabs } from "../components/MatchTabs";
+import { getMatchById } from "@/data/matches";
+import { getHeadToHead } from "@/data/headToHead";
+import { CountryFlag } from "@/components/CountryFlag";
+import { Logo } from "@/components/Logo";
+import { CountdownTimer } from "@/components/CountdownTimer";
+import { MatchTabs } from "@/components/MatchTabs";
 
-export function MatchDetailPage() {
-  const { matchId } = useParams<{ matchId: string }>();
-  const match = matchId ? getMatchById(matchId) : undefined;
+export default async function MatchDetailPage({
+  params,
+}: {
+  params: Promise<{ matchId: string }>;
+}) {
+  const { matchId } = await params;
+  const match = getMatchById(matchId);
 
   if (!match) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl mb-4">Match hittades inte</h1>
-          <Link to="/" className="text-[#d4af37] hover:underline">
+          <Link href="/" className="text-[#d4af37] hover:underline">
             Tillbaka till startsidan
           </Link>
         </div>
@@ -26,7 +31,7 @@ export function MatchDetailPage() {
   }
 
   const swedenMatchDate = new Date('2026-04-13T21:00:00');
-  const headToHead = getHeadToHead(matchId || "");
+  const headToHead = getHeadToHead(matchId);
 
   const bestOdds = {
     home: Math.max(
@@ -58,11 +63,11 @@ export function MatchDetailPage() {
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <Logo size="sm" showText={true} />
             </Link>
             <Link
-              to="/"
+              href="/"
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -104,7 +109,7 @@ export function MatchDetailPage() {
                       transition={{ duration: 2, repeat: Infinity }}
                       className="w-3 h-3 bg-red-500 rounded-full"
                     />
-                    <span className="text-red-500 uppercase tracking-wider font-bold">Live {match.minute}'</span>
+                    <span className="text-red-500 uppercase tracking-wider font-bold">Live {match.minute}&apos;</span>
                   </div>
                 </div>
               )}

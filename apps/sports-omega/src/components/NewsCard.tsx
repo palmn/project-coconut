@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+"use client";
+import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
 
 interface NewsArticle {

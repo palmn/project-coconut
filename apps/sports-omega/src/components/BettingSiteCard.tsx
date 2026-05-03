@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+"use client";
+import { motion } from "framer-motion";
 import { Star, Gift, ExternalLink, Check } from "lucide-react";
 
 interface BettingSite {

@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { Link } from "react-router";
+"use client";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import { TrendingUp, Calendar, Clock, MapPin, ExternalLink } from "lucide-react";
 import { CountryFlag } from "./CountryFlag";
 
