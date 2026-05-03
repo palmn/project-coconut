@@ -27,7 +27,7 @@ interface LiveMatch {
 
 export function LiveMatchCard({ match }: { match: LiveMatch }) {
   return (
-    <Link to={`/match/${match.id}`} className="block">
+    <Link href={`/match/${match.id}`} className="block">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}

@@ -29,22 +29,28 @@ export default function HomePage() {
             Live Matcher
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <LiveMatchCard 
-              homeTeam="Brasilien" 
-              awayTeam="Argentina" 
-              homeScore={2} 
-              awayScore={1} 
-              minute={78} 
-              status="Grupp A" 
-            />
-            <LiveMatchCard 
-              homeTeam="Frankrike" 
-              awayTeam="Tyskland" 
-              homeScore={0} 
-              awayScore={0} 
-              minute={34} 
-              status="Grupp C" 
-            />
+            <LiveMatchCard match={{
+              id: "bra-arg-1",
+              homeTeam: "Brasilien",
+              awayTeam: "Argentina",
+              homeScore: 2,
+              awayScore: 1,
+              minute: 78,
+              status: "Grupp A",
+              stats: { possession: [52, 48], shots: [14, 10], shotsOnTarget: [6, 4], corners: [5, 3] },
+              topOdds: { home: { value: 2.10, site: "Bet365" }, draw: { value: 3.40, site: "Unibet" }, away: { value: 3.80, site: "Svenska Spel" } }
+            }} />
+            <LiveMatchCard match={{
+              id: "fra-ger-1",
+              homeTeam: "Frankrike",
+              awayTeam: "Tyskland",
+              homeScore: 0,
+              awayScore: 0,
+              minute: 34,
+              status: "Grupp C",
+              stats: { possession: [55, 45], shots: [8, 6], shotsOnTarget: [2, 1], corners: [4, 2] },
+              topOdds: { home: { value: 1.80, site: "Bet365" }, draw: { value: 3.60, site: "ComeOn" }, away: { value: 4.50, site: "Unibet" } }
+            }} />
           </div>
         </section>
 
