@@ -52,7 +52,7 @@ export function MatchTable({ matches }: { matches: Match[] }) {
                 className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors"
               >
                 <td className="py-4 px-4">
-                  <Link to={`/match/${match.id}`} className="block">
+                  <Link href={`/match/${match.id}`} className="block">
                     {match.status === "live" ? (
                       <div className="flex items-center gap-2">
                         <motion.div
@@ -75,7 +75,7 @@ export function MatchTable({ matches }: { matches: Match[] }) {
                 </td>
 
                 <td className="py-4 px-4">
-                  <Link to={`/match/${match.id}`} className="block">
+                  <Link href={`/match/${match.id}`} className="block">
                     <div className="flex items-center gap-2">
                       <CountryFlag country={match.homeTeam} size="sm" />
                       <span className="font-medium">{match.homeTeam}</span>
@@ -92,13 +92,13 @@ export function MatchTable({ matches }: { matches: Match[] }) {
                 </td>
 
                 <td className="py-4 px-4 text-sm text-muted-foreground">
-                  <Link to={`/match/${match.id}`} className="block">
+                  <Link href={`/match/${match.id}`} className="block">
                     {match.time}
                   </Link>
                 </td>
 
                 <td className="text-center py-4 px-4">
-                  <Link to={`/match/${match.id}`} className="block">
+                  <Link href={`/match/${match.id}`} className="block">
                     <div className="inline-block px-3 py-1 bg-muted rounded font-semibold text-sm hover:bg-gradient-to-r hover:from-[#d4af37] hover:to-[#c9a227] hover:text-[#003566] transition-all cursor-pointer hover:shadow-md">
                       {match.bestOdds.home.toFixed(2)}
                     </div>
@@ -106,7 +106,7 @@ export function MatchTable({ matches }: { matches: Match[] }) {
                 </td>
 
                 <td className="text-center py-4 px-4">
-                  <Link to={`/match/${match.id}`} className="block">
+                  <Link href={`/match/${match.id}`} className="block">
                     <div className="inline-block px-3 py-1 bg-muted rounded font-semibold text-sm hover:bg-gradient-to-r hover:from-[#d4af37] hover:to-[#c9a227] hover:text-[#003566] transition-all cursor-pointer hover:shadow-md">
                       {match.bestOdds.draw.toFixed(2)}
                     </div>
@@ -114,7 +114,7 @@ export function MatchTable({ matches }: { matches: Match[] }) {
                 </td>
 
                 <td className="text-center py-4 px-4">
-                  <Link to={`/match/${match.id}`} className="block">
+                  <Link href={`/match/${match.id}`} className="block">
                     <div className="inline-block px-3 py-1 bg-muted rounded font-semibold text-sm hover:bg-gradient-to-r hover:from-[#d4af37] hover:to-[#c9a227] hover:text-[#003566] transition-all cursor-pointer hover:shadow-md">
                       {match.bestOdds.away.toFixed(2)}
                     </div>

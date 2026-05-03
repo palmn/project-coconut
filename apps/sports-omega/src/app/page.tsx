@@ -59,7 +59,21 @@ export default function HomePage() {
             <span className="w-2 h-8 bg-[#d4af37] rounded-full" />
             Bästa Oddsen: Sverige vs Spanien
           </h2>
-          <OddsComparisonTable />
+          <OddsComparisonTable match={{
+            id: "swe-esp-1",
+            homeTeam: "Sverige",
+            awayTeam: "Spanien",
+            date: "2026-06-15",
+            time: "20:00",
+            venue: "MetLife Stadium, New Jersey",
+            odds: {
+              betsson: { home: 4.50, draw: 3.40, away: 1.80 },
+              unibet: { home: 4.75, draw: 3.25, away: 1.85 },
+              svenskaspel: { home: 4.40, draw: 3.50, away: 1.75 },
+              comeon: { home: 4.80, draw: 3.30, away: 1.82 },
+              leovegas: { home: 4.65, draw: 3.45, away: 1.78 }
+            }
+          }} />
         </section>
 
         <section>
@@ -68,9 +82,33 @@ export default function HomePage() {
             Senaste Nyheterna
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <NewsCard title="Zlatan: 'Sverige kan vinna VM 2026'" category="Spelare" />
-            <NewsCard title="Isak i toppform inför starten" category="Analys" />
-            <NewsCard title="VM-grupperna klara" category="VM-nyheter" />
+            <NewsCard article={{
+              id: "news-1",
+              title: "Zlatan: 'Sverige kan vinna VM 2026'",
+              excerpt: "Den svenska legendaren tror på blågult i sommarens stora turnering.",
+              category: "Spelare",
+              date: "2026-05-03",
+              image: "",
+              readTime: "3 min"
+            }} index={0} />
+            <NewsCard article={{
+              id: "news-2",
+              title: "Isak i toppform inför starten",
+              excerpt: "Newcastles stjärna har gjort 22 mål denna säsong och ser stark ut.",
+              category: "Analys",
+              date: "2026-05-02",
+              image: "",
+              readTime: "5 min"
+            }} index={1} />
+            <NewsCard article={{
+              id: "news-3",
+              title: "VM-grupperna klara",
+              excerpt: "Sverige hamnar i Grupp E tillsammans med Spanien, Japan och Nya Zeeland.",
+              category: "VM-nyheter",
+              date: "2026-05-01",
+              image: "",
+              readTime: "2 min"
+            }} index={2} />
           </div>
         </section>
       </div>
