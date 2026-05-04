@@ -30,7 +30,7 @@ export default function HomePage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <LiveMatchCard match={{
-              id: "bra-arg-1",
+              id: "m1",
               homeTeam: "Brasilien",
               awayTeam: "Argentina",
               homeScore: 2,
@@ -41,7 +41,7 @@ export default function HomePage() {
               topOdds: { home: { value: 2.10, site: "Bet365" }, draw: { value: 3.40, site: "Unibet" }, away: { value: 3.80, site: "Svenska Spel" } }
             }} />
             <LiveMatchCard match={{
-              id: "fra-ger-1",
+              id: "m2",
               homeTeam: "Frankrike",
               awayTeam: "Tyskland",
               homeScore: 0,
@@ -60,7 +60,7 @@ export default function HomePage() {
             Bästa Oddsen: Sverige vs Spanien
           </h2>
           <OddsComparisonTable match={{
-            id: "swe-esp-1",
+            id: "m3",
             homeTeam: "Sverige",
             awayTeam: "Spanien",
             date: "2026-06-15",

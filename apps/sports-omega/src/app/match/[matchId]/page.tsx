@@ -1,6 +1,5 @@
-"use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, MapPin, Tv, Radio as RadioIcon, TrendingUp } from "lucide-react";
 import { getMatchById } from "@/data/matches";
 import { getHeadToHead } from "@/data/headToHead";
@@ -8,6 +7,14 @@ import { CountryFlag } from "@/components/CountryFlag";
 import { Logo } from "@/components/Logo";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { MatchTabs } from "@/components/MatchTabs";
+
+import { matchesData } from "@/data/matches";
+
+export async function generateStaticParams() {
+  return matchesData.map((match) => ({
+    matchId: match.id,
+  }));
+}
 
 export default async function MatchDetailPage({
   params,
@@ -18,16 +25,7 @@ export default async function MatchDetailPage({
   const match = getMatchById(matchId);
 
   if (!match) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl mb-4">Match hittades inte</h1>
-          <Link href="/" className="text-[#d4af37] hover:underline">
-            Tillbaka till startsidan
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   const swedenMatchDate = new Date('2026-04-13T21:00:00');
@@ -90,13 +88,9 @@ export default async function MatchDetailPage({
               </div>
               <h1 className="text-5xl font-bold mb-2">{match.homeTeam}</h1>
               {match.homeScore !== undefined && (
-                <motion.div
-                  initial={{ scale: 1.2, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="text-7xl font-bold text-[#d4af37]"
-                >
+                <div className="text-7xl font-bold text-[#d4af37]">
                   {match.homeScore}
-                </motion.div>
+                </div>
               )}
             </div>
 
@@ -104,11 +98,7 @@ export default async function MatchDetailPage({
               {match.status === "live" && (
                 <div className="mb-4">
                   <div className="flex items-center justify-center gap-2">
-                    <motion.div
-                      animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="w-3 h-3 bg-red-500 rounded-full"
-                    />
+                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
                     <span className="text-red-500 uppercase tracking-wider font-bold">Live {match.minute}&apos;</span>
                   </div>
                 </div>
@@ -129,13 +119,9 @@ export default async function MatchDetailPage({
               </div>
               <h1 className="text-5xl font-bold mb-2">{match.awayTeam}</h1>
               {match.awayScore !== undefined && (
-                <motion.div
-                  initial={{ scale: 1.2, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="text-7xl font-bold text-[#d4af37]"
-                >
+                <div className="text-7xl font-bold text-[#d4af37]">
                   {match.awayScore}
-                </motion.div>
+                </div>
               )}
             </div>
           </div>
@@ -161,11 +147,7 @@ export default async function MatchDetailPage({
           {/* Main Content */}
           <div className="space-y-8">
             {/* Broadcast Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-card border border-border rounded-xl p-6"
-            >
+            <div className="bg-card border border-border rounded-xl p-6">
               <div className="flex items-center gap-2 mb-6">
                 <Tv className="w-6 h-6 text-[#003566]" />
                 <h2>Var kan jag se matchen?</h2>
@@ -202,20 +184,16 @@ export default async function MatchDetailPage({
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Match Tabs */}
+            {/* Match Tabs - client component wrapper */}
             <MatchTabs match={match} headToHead={headToHead} />
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Best Odds */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-card border border-border rounded-xl p-6 sticky top-24"
-            >
+            <div className="bg-card border border-border rounded-xl p-6 sticky top-24">
               <div className="flex items-center gap-2 mb-6">
                 <TrendingUp className="w-5 h-5 text-[#003566]" />
                 <h3>Bästa oddsen</h3>
@@ -264,7 +242,7 @@ export default async function MatchDetailPage({
               <button className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-[#d4af37] via-[#c9a227] to-[#d4af37] text-[#003566] rounded-lg font-bold hover:shadow-xl transition-all shadow-lg">
                 Spela nu
               </button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
